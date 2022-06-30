@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -17,6 +18,7 @@ const Frame = styled.div`
   margin: auto;
   padding: 60px 20px;
   border-radius: 15px;
+  text-align: center;
 `;
 
 const Logo = styled.svg`
@@ -26,9 +28,7 @@ const Logo = styled.svg`
   margin-bottom: 20px;
 `;
 
-const LoginForm = styled.form`
-  text-align: center;
-`;
+const LoginForm = styled.form``;
 
 const Input = styled.div`
   padding: 10px 5px;
@@ -66,9 +66,21 @@ const LoginBtn = styled.button`
   font-weight: bold;
 `;
 
+const SignupLink = styled.div`
+  /* background-color: blue; */
+  margin-top: 20px;
+  font-size: 11px;
+
+  span {
+    text-decoration: underline;
+  }
+`;
+
 interface FormData {
   email: string;
+  nickname: string;
   password: string;
+  birth: string;
 }
 
 function Login() {
@@ -78,9 +90,20 @@ function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
+  const getUserdata = () => {
+    const getDataStr = localStorage.getItem("user");
+    const getDataObj = JSON.parse(getDataStr || "");
+    return getDataObj;
+  };
   const onValid = (data: FormData) => {
-    navigate("/home");
-    window.location.reload();
+    if (
+      data.email === getUserdata().email &&
+      data.password === getUserdata().password
+    ) {
+      navigate("/home");
+      window.location.reload();
+    }
+    return;
   };
   return (
     <Wrapper>
@@ -101,7 +124,6 @@ function Login() {
             <input
               {...register("email", {
                 required: true,
-                pattern: /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
               })}
               type="text"
               placeholder="email"
@@ -118,8 +140,6 @@ function Login() {
             <input
               {...register("password", {
                 required: true,
-                pattern:
-                  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@!%*#?&])[A-Za-z\d@!%*#?&]{8,}$/,
               })}
               type="password"
               placeholder="password"
@@ -132,16 +152,14 @@ function Login() {
               ) : null}
             </span>
           </Input>
-          <LoginBtn
-            type="submit"
-            style={{
-              opacity: `${!errors.email && !errors.password ? 1 : 0.5}`,
-            }}
-            disabled={!errors.email && !errors.password ? false : true}
-          >
-            Login
-          </LoginBtn>
+          <LoginBtn type="submit">Login</LoginBtn>
         </LoginForm>
+        <SignupLink>
+          계정이 없으신가요?
+          <Link to={`/signup`}>
+            <span>회원가입</span>
+          </Link>
+        </SignupLink>
       </Frame>
     </Wrapper>
   );
