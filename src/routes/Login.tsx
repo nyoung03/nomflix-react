@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -156,7 +155,7 @@ function Login() {
         </LoginForm>
         <SignupLink>
           계정이 없으신가요?
-          <Link to={`/signup`}>
+          <Link to="signup">
             <span>회원가입</span>
           </Link>
         </SignupLink>

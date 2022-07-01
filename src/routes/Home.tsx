@@ -1,5 +1,12 @@
+import styled from "styled-components";
+
+const Wapper = styled.div`
+  height: 1000px;
+  /* background-color: red; */
+`;
+
 function Home() {
-  return null;
+  return <Wapper></Wapper>;
 }
 
 export default Home;
