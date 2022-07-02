@@ -2,79 +2,6 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-const Wrapper = styled.div`
-  background-color: black;
-  min-height: 100vh;
-  display: flex;
-`;
-
-const Frame = styled.div`
-  background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: auto;
-  padding: 60px 20px;
-  border-radius: 15px;
-  text-align: center;
-`;
-
-const Logo = styled.svg`
-  width: 115px;
-  height: 40px;
-  margin-top: -20px;
-  margin-bottom: 20px;
-`;
-
-const LoginForm = styled.form``;
-
-const Input = styled.div`
-  padding: 10px 5px;
-  margin: 8px 0;
-  border: 2px solid black;
-  border-radius: 15px;
-  display: flex;
-
-  input {
-    border: none;
-
-    &:focus {
-      outline: none;
-    }
-  }
-
-  span {
-    padding: 0 3px;
-
-    svg {
-      width: 13px;
-      height: 16px;
-      fill: ${(props) => props.theme.red};
-    }
-  }
-`;
-
-const LoginBtn = styled.button`
-  border: none;
-  background-color: #039be5;
-  margin-top: 25px;
-  width: 90%;
-  padding: 10px;
-  border-radius: 15px;
-  font-weight: bold;
-`;
-
-const SignupLink = styled.div`
-  /* background-color: blue; */
-  margin-top: 20px;
-  font-size: 11px;
-
-  span {
-    text-decoration: underline;
-  }
-`;
-
 interface FormData {
   email: string;
   nickname: string;
@@ -165,3 +92,75 @@ function Login() {
 }
 
 export default Login;
+
+const Wrapper = styled.div`
+  min-height: 100vh;
+  display: flex;
+`;
+
+const Frame = styled.div`
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+  padding: 60px 20px;
+  border-radius: 15px;
+  text-align: center;
+`;
+
+const Logo = styled.svg`
+  width: 115px;
+  height: 40px;
+  margin-top: -20px;
+  margin-bottom: 20px;
+`;
+
+const LoginForm = styled.form``;
+
+const Input = styled.div`
+  padding: 10px 5px;
+  margin: 8px 0;
+  border: 2px solid black;
+  border-radius: 15px;
+  display: flex;
+
+  input {
+    border: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  span {
+    padding: 0 3px;
+
+    svg {
+      width: 13px;
+      height: 16px;
+      fill: ${(props) => props.theme.red};
+    }
+  }
+`;
+
+const LoginBtn = styled.button`
+  border: none;
+  background-color: #039be5;
+  margin-top: 25px;
+  width: 90%;
+  padding: 10px;
+  border-radius: 15px;
+  font-weight: bold;
+`;
+
+const SignupLink = styled.div`
+  margin-top: 20px;
+  font-size: 11px;
+  color: ${(props) => props.theme.black.lighter};
+
+  span {
+    text-decoration: underline;
+  }
+`;

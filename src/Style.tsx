@@ -33,8 +33,11 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	line-height: 1;
+	line-height: 1.2;
   font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 300;
+  color: ${(props) => props.theme.white.darker};
+  background-color: black;
 }
 ol, ul {
 	list-style: none;

@@ -2,74 +2,6 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-const Wrapper = styled.div`
-  background-color: black;
-  min-height: 100vh;
-  display: flex;
-`;
-
-const Frame = styled.div`
-  background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: auto;
-  padding: 45px 30px;
-  border-radius: 15px;
-  text-align: center;
-`;
-
-const Title = styled.div`
-  margin-bottom: 20px;
-  font-size: 20px;
-  font-weight: bold;
-  color: ${(props) => props.theme.red};
-`;
-
-const SignupForm = styled.form``;
-
-const Input = styled.div`
-  padding: 10px;
-  margin: 18px 0 7px 0;
-  border-bottom: 2px solid black;
-  display: flex;
-
-  input {
-    border: none;
-    padding: 0 30px;
-
-    &:focus {
-      outline: none;
-    }
-  }
-
-  span {
-    padding: 0 3px;
-
-    svg {
-      width: 13px;
-      height: 16px;
-      fill: green;
-    }
-  }
-`;
-
-const SignupBtn = styled.button`
-  border: none;
-  background-color: #039be5;
-  margin-top: 25px;
-  width: 90%;
-  padding: 10px;
-  border-radius: 15px;
-  font-weight: bold;
-`;
-
-const Error = styled.div`
-  color: red;
-  font-size: 12px;
-`;
-
 interface ISignup {
   email: string;
   nickname: string;
@@ -150,3 +82,71 @@ function SignUp() {
 }
 
 export default SignUp;
+
+const Wrapper = styled.div`
+  background-color: black;
+  min-height: 100vh;
+  display: flex;
+`;
+
+const Frame = styled.div`
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+  padding: 45px 30px;
+  border-radius: 15px;
+  text-align: center;
+`;
+
+const Title = styled.div`
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: ${(props) => props.theme.red};
+`;
+
+const SignupForm = styled.form``;
+
+const Input = styled.div`
+  padding: 10px;
+  margin: 18px 0 7px 0;
+  border-bottom: 2px solid black;
+  display: flex;
+
+  input {
+    border: none;
+    padding: 0 30px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  span {
+    padding: 0 3px;
+
+    svg {
+      width: 13px;
+      height: 16px;
+      fill: green;
+    }
+  }
+`;
+
+const SignupBtn = styled.button`
+  border: none;
+  background-color: #039be5;
+  margin-top: 25px;
+  width: 90%;
+  padding: 10px;
+  border-radius: 15px;
+  font-weight: bold;
+`;
+
+const Error = styled.div`
+  color: red;
+  font-size: 12px;
+`;
