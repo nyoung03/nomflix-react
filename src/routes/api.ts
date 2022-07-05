@@ -32,6 +32,7 @@ interface IGenres {
 }
 
 export interface IGetMoiveDetail {
+  adult: boolean;
   backdrop_path: string;
   homepage: string;
   id: number;
@@ -42,6 +43,7 @@ export interface IGetMoiveDetail {
   tagline: string;
   title: string;
   genres: IGenres[];
+  overview: string;
 }
 
 export function getNowMovies() {

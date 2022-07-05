@@ -106,11 +106,6 @@ function Home() {
   const onOverlayClick = () => {
     navigation("/home");
   };
-  const clickedMovie =
-    MovieDetailMatch?.params.id &&
-    nowPlay?.results.find(
-      (movie) => String(movie.id) === MovieDetailMatch.params.id
-    );
   return (
     <Wrapper>
       {nowPlayIsLoading ? (
@@ -125,7 +120,6 @@ function Home() {
               0,
               192
             )}...`}</Overview>
-            <PlusBtn>자세히 보기</PlusBtn>
           </Banner>
           <Slider>
             <SliderTitle>Now Playing</SliderTitle>
@@ -258,19 +252,6 @@ const Overview = styled.p`
   font-size: 1em;
   width: 40%;
   line-height: 1.3;
-`;
-
-const PlusBtn = styled.div`
-  width: 100px;
-  height: 20px;
-  background-color: ${(props) => props.theme.white.lighter};
-  color: ${(props) => props.theme.black.darker};
-  font-weight: bold;
-  text-align: center;
-  margin-top: 20px;
-  border-radius: 10px;
-  padding: 5px 3px;
-  cursor: pointer;
 `;
 
 const Slider = styled.div`
