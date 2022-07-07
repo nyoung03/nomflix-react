@@ -40,6 +40,26 @@ export function getPopularMovies() {
   ).then((response) => response.json());
 }
 
+interface ITv {
+  backdrop_path: string;
+  first_air_date: string;
+  id: number;
+  name: string;
+  overview: string;
+  poster_path: string;
+  vote_average: 8.4;
+}
+
+export interface IGetTvs {
+  results: ITv[];
+}
+
+export function getOnAirTv() {
+  return fetch(
+    `${BASE_PATH}/tv/on_the_air?api_key=${API_KEY}&language=ko`
+  ).then((response) => response.json());
+}
+
 // Detail
 interface IGenres {
   id: number;

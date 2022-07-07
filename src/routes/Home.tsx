@@ -79,7 +79,7 @@ function Home() {
   const navigation = useNavigate();
   const MovieDetailMatch = useMatch("/movies/:id");
   const { scrollY } = useViewportScroll();
-  const setScrollY = useTransform(scrollY, (value) => value + 50);
+  const setScrollY = useTransform(scrollY, (value) => value + 70);
   const { data: nowPlayMovie, isLoading: nowPlayIsLoading } =
     useQuery<IGetMovies>(["movies", categories.nowPlay], getNowMovies);
   const { data: topRatedMovie, isLoading: topRatedIsLoading } =
@@ -544,6 +544,7 @@ const SliderTitle = styled.div`
   top: -50px;
   left: 80px;
   font-size: 30px;
+  font-weight: bold;
 `;
 
 const Row = styled(motion.div)`
