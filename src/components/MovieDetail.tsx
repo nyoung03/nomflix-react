@@ -10,7 +10,6 @@ function Detail() {
       getMovieDetail(MovieDetailMatch?.params.id || "")
     );
   const titleLen = detail?.title.length as any;
-  console.log(titleLen);
   return (
     <Wrapper>
       {detailIsLoading ? (
