@@ -14,25 +14,25 @@ import { getOnAirTv, IGetTvs } from "./api";
 
 const leftrowVariants = {
   hidden: {
-    x: window.innerWidth,
+    x: window.innerWidth + 10,
   },
   visible: {
     x: 0,
   },
   exit: {
-    x: -window.innerWidth,
+    x: -window.innerWidth - 10,
   },
 };
 
 const rightrowVariants = {
   hidden: {
-    x: -window.innerWidth,
+    x: -window.innerWidth - 10,
   },
   visible: {
     x: 0,
   },
   exit: {
-    x: window.innerWidth,
+    x: window.innerWidth + 10,
   },
 };
 
@@ -155,7 +155,11 @@ function Tv() {
                             "w500"
                           )}
                         />
-                        <h4>{tv.name}</h4>
+                        <h4>
+                          {tv.name.length > 17
+                            ? `${tv.name.slice(0, 17)}...`
+                            : tv.name}
+                        </h4>
                         <Icon>
                           <svg
                             xmlns="http://www.w3.org/2000/svg"

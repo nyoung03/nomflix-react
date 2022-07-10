@@ -20,25 +20,25 @@ import {
 
 const leftrowVariants = {
   hidden: {
-    x: window.innerWidth,
+    x: window.innerWidth + 10,
   },
   visible: {
     x: 0,
   },
   exit: {
-    x: -window.innerWidth,
+    x: -window.innerWidth - 10,
   },
 };
 
 const rightrowVariants = {
   hidden: {
-    x: -window.innerWidth + 10,
+    x: -window.innerWidth - 10,
   },
   visible: {
     x: 0,
   },
   exit: {
-    x: window.innerWidth - 10,
+    x: window.innerWidth + 10,
   },
 };
 

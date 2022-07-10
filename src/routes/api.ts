@@ -61,7 +61,7 @@ export function getOnAirTv() {
 }
 
 // Detail
-interface IGenres {
+interface IMovieGenres {
   id: number;
   name: string;
 }
@@ -77,7 +77,7 @@ export interface IGetMoiveDetail {
   runtime: number;
   tagline: string;
   title: string;
-  genres: IGenres[];
+  genres: IMovieGenres[];
   overview: string;
 }
 
@@ -87,4 +87,25 @@ export function getMovieDetail(movieId: string) {
   ).then((response) => response.json());
 }
 
-// https://api.themoviedb.org/3/genre/tv/list?api_key=%5BMY_KEY%5D&language=en-US
+interface ITvGenres {
+  id: number;
+  name: string;
+}
+
+export interface IGetTvDetail {
+  backdrop_path: string;
+  first_air_date: string;
+  genres: ITvGenres[];
+  id: number;
+  last_air_date: string;
+  name: string;
+  number_of_episodes: number;
+  number_of_seasons: number;
+  poster_path: string;
+}
+
+export function getTvDetail(tvId: string) {
+  return fetch(`${BASE_PATH}/tv/${tvId}?api_key=${API_KEY}&language=ko`).then(
+    (response) => response.json()
+  );
+}
