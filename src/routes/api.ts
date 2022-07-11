@@ -128,3 +128,42 @@ export function getTvDetail(tvId: string) {
     (response) => response.json()
   );
 }
+
+// search
+
+interface IPeople {
+  backdrop_path: string;
+  first_air_date: string;
+  id: number;
+  media_type: string;
+  name: string;
+  overview: string;
+  poster_path: string;
+  vote_average: number;
+}
+
+interface IMulti {
+  backdrop_path: string;
+  id: number;
+  media_type: string;
+  overview: string;
+  poster_path: string;
+  release_date: string;
+  title: string;
+  vote_average: number;
+  first_air_date: string;
+  name: string;
+  known_for: IPeople[];
+  known_for_department: string;
+  profile_path: string;
+}
+
+export interface IGetMultiMedia {
+  results: IMulti[];
+}
+
+export function getMulti(keyword: string) {
+  return fetch(
+    `${BASE_PATH}/search/multi?api_key=${API_KEY}&language=ko&query=${keyword}&page=1&include_adult=false`
+  ).then((response) => response.json());
+}
