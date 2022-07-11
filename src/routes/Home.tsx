@@ -260,7 +260,6 @@ function Home() {
                 transition={{ type: "tween", duration: 1 }}
               >
                 {topRatedMovie?.results
-                  .slice(1)
                   .slice(
                     offset * topRatedIndex,
                     offset * topRatedIndex + offset
@@ -339,7 +338,6 @@ function Home() {
                 transition={{ type: "tween", duration: 1 }}
               >
                 {upcomingMovie?.results
-                  .slice(1)
                   .slice(
                     offset * upcomingIndex,
                     offset * upcomingIndex + offset
@@ -418,7 +416,6 @@ function Home() {
                 transition={{ type: "tween", duration: 1 }}
               >
                 {popularMovie?.results
-                  .slice(1)
                   .slice(offset * popularIndex, offset * popularIndex + offset)
                   .map((movie) => (
                     <Box

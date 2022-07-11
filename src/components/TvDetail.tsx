@@ -87,6 +87,7 @@ const SubInfo = styled.div`
   display: flex;
   justify-content: space-around;
   margin-top: 20px;
+  font-size: 14px;
 
   div,
   ul {

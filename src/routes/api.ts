@@ -60,6 +60,24 @@ export function getOnAirTv() {
   ).then((response) => response.json());
 }
 
+export function getPoPularTv() {
+  return fetch(`${BASE_PATH}/tv/popular?api_key=${API_KEY}&language=ko`).then(
+    (response) => response.json()
+  );
+}
+
+export function getTopRatedTv() {
+  return fetch(`${BASE_PATH}/tv/top_rated?api_key=${API_KEY}&language=ko`).then(
+    (response) => response.json()
+  );
+}
+
+export function getAiringTodayTv() {
+  return fetch(
+    `${BASE_PATH}/tv/airing_today?api_key=${API_KEY}&language=ko`
+  ).then((response) => response.json());
+}
+
 // Detail
 interface IMovieGenres {
   id: number;
