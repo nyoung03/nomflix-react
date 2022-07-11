@@ -27,7 +27,7 @@ function Detail() {
               {detail?.title}
               <p>{detail?.tagline}</p>
             </Title>
-            <Overview>{`${detail?.overview.slice(0, 142)}...`}</Overview>
+            <Overview>{`${detail?.overview.slice(0, 320)}...`}</Overview>
             <SubInfo>
               <ul>
                 {detail?.genres.map((i) => (
@@ -89,11 +89,12 @@ const Title = styled.h3<{ marginTop: string }>`
 
 const Overview = styled.p`
   padding: 20px 0 10px 0;
+  font-size: 15px;
 `;
 
 const SubInfo = styled.div`
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   padding: 10px 0;
 

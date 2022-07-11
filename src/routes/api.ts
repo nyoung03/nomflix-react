@@ -102,6 +102,7 @@ export interface IGetTvDetail {
   number_of_episodes: number;
   number_of_seasons: number;
   poster_path: string;
+  overview: string;
 }
 
 export function getTvDetail(tvId: string) {
