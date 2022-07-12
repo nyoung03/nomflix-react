@@ -118,7 +118,7 @@ const Input = styled.div`
 
   input {
     border: none;
-    padding: 0 30px;
+    padding-right: 30px;
 
     &:focus {
       outline: none;
@@ -148,5 +148,5 @@ const SignupBtn = styled.button`
 
 const Error = styled.div`
   color: red;
-  font-size: 12px;
+  font-size: 10px;
 `;
