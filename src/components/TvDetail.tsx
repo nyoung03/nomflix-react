@@ -11,7 +11,6 @@ function TvDetail() {
     () => getTvDetail(TvDetailMatch?.params.id || "")
   );
   const titleLen = detail?.name.length as any;
-  console.log(detail);
   return (
     <Wrapper>
       {detailIsLoading ? (

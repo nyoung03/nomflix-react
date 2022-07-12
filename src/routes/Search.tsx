@@ -1,7 +1,13 @@
-import { AnimatePresence, motion } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useTransform,
+  useViewportScroll,
+} from "framer-motion";
 import { useQuery } from "react-query";
-import { useLocation } from "react-router-dom";
+import { useLocation, useMatch, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import SearchDetail from "../components/SearchDetail";
 import { makeImagePath } from "../utils";
 import { getMulti, IGetMultiMedia } from "./api";
 
@@ -34,7 +40,17 @@ function Search() {
   const { data, isLoading } = useQuery<IGetMultiMedia>("keyword", () =>
     getMulti(keyword || "")
   );
-  console.log(data);
+  const navigation = useNavigate();
+  const idMatch = useMatch("/search/:id");
+  const onBoxClicked = (mediaId: number) => {
+    navigation(`/search/${mediaId}`);
+  };
+  const getkeyword = localStorage.getItem("keyword");
+  const onOverlayClick = () => {
+    navigation(`/search?keyword=${getkeyword}`);
+  };
+  const { scrollY } = useViewportScroll();
+  const setScrollY = useTransform(scrollY, (value) => value + 70);
   return (
     <Wrapper>
       {isLoading ? (
@@ -45,70 +61,129 @@ function Search() {
           <SearchResults>
             <h3>Movie</h3>
             <Row>
-              {data?.results.map((i) =>
-                i.media_type === "movie" ? (
-                  <Box
-                    key={i.id}
-                    bgphoto={makeImagePath(i.poster_path, "w500")}
-                    variants={boxVariants}
-                    initial="normal"
-                    whileHover="hover"
-                    transition={{ type: "tween" }}
-                  >
-                    <Info variants={infoVariants} key={i.id}>
-                      <HoverImg
-                        bgphoto={makeImagePath(i.backdrop_path, "w500")}
-                      />
-                      <h4>{i.title}</h4>
-                      <div>개봉일 : </div>
-                      <div>평점 : ⭐</div>
-                    </Info>
-                  </Box>
-                ) : (
-                  ""
-                )
-              )}
+              {data?.results &&
+                data?.results.map((movie) =>
+                  movie.media_type === "movie" ? (
+                    <Box
+                      key={movie.id}
+                      bgphoto={
+                        movie.poster_path
+                          ? `${makeImagePath(movie.poster_path, "w500")}`
+                          : ""
+                      }
+                      variants={boxVariants}
+                      initial="normal"
+                      whileHover="hover"
+                      transition={{ type: "tween" }}
+                      onClick={() => onBoxClicked(movie.id)}
+                    >
+                      <Info variants={infoVariants} key={movie.id}>
+                        <HoverImg
+                          bgphoto={
+                            movie.backdrop_path
+                              ? `${makeImagePath(movie.backdrop_path, "w500")}`
+                              : ""
+                          }
+                        />
+                        <h4>{movie.title}</h4>
+                        <div>개봉일 : {movie.release_date}</div>
+                        <div>평점 : ⭐{movie.vote_average}</div>
+                      </Info>
+                    </Box>
+                  ) : (
+                    ""
+                  )
+                )}
             </Row>
           </SearchResults>
           <SearchResults>
             <h3>Tv Show</h3>
             <Row>
-              {data?.results.map((i) =>
-                i.media_type === "tv" ? (
-                  <Box
-                    key={i.id}
-                    bgphoto={makeImagePath(i.poster_path, "w500")}
-                    variants={boxVariants}
-                    initial="normal"
-                    whileHover="hover"
-                    transition={{ type: "tween" }}
-                  ></Box>
-                ) : (
-                  ""
-                )
-              )}
+              {data?.results &&
+                data?.results.map((tv) =>
+                  tv.media_type === "tv" ? (
+                    <Box
+                      key={tv.id}
+                      bgphoto={
+                        tv.poster_path
+                          ? `${makeImagePath(tv.poster_path, "w500")}`
+                          : ""
+                      }
+                      variants={boxVariants}
+                      initial="normal"
+                      whileHover="hover"
+                      transition={{ type: "tween" }}
+                    >
+                      <Info variants={infoVariants} key={tv.id}>
+                        <HoverImg
+                          bgphoto={
+                            tv.backdrop_path
+                              ? `${makeImagePath(tv.backdrop_path, "w500")}`
+                              : ""
+                          }
+                        />
+                        <h4>{tv.name}</h4>
+                        <div>첫 방송 : {tv.first_air_date}</div>
+                        <div>평점 : ⭐{tv.vote_average}</div>
+                      </Info>
+                    </Box>
+                  ) : (
+                    ""
+                  )
+                )}
             </Row>
           </SearchResults>
           <SearchResults>
             <h3>People</h3>
             <Row>
-              {data?.results.map((i) =>
-                i.media_type === "person" ? (
-                  <Box
-                    key={i.id}
-                    bgphoto={makeImagePath(i.profile_path, "w500")}
-                    variants={boxVariants}
-                    initial="normal"
-                    whileHover="hover"
-                    transition={{ type: "tween" }}
-                  ></Box>
-                ) : (
-                  ""
-                )
-              )}
+              {data?.results &&
+                data?.results.map((person) =>
+                  person.media_type === "person" ? (
+                    <Box
+                      key={person.id}
+                      bgphoto={
+                        person.profile_path
+                          ? `${makeImagePath(person.profile_path, "w500")}`
+                          : ""
+                      }
+                      variants={boxVariants}
+                      initial="normal"
+                      whileHover="hover"
+                      transition={{ type: "tween" }}
+                    >
+                      <Info variants={infoVariants} key={person.id}>
+                        <HoverImg
+                          bgphoto={
+                            person.profile_path
+                              ? `${makeImagePath(person.profile_path, "w500")}`
+                              : ""
+                          }
+                          style={{ height: "70%" }}
+                        />
+                        <h4>{person.name}</h4>
+                        <div>{person.known_for_department}</div>
+                      </Info>
+                    </Box>
+                  ) : (
+                    ""
+                  )
+                )}
             </Row>
           </SearchResults>
-          <AnimatePresence></AnimatePresence>
+          <>
+            {idMatch ? (
+              <>
+                <Overlay
+                  onClick={onOverlayClick}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 1 }}
+                />
+                <Detail style={{ top: setScrollY }}>
+                  <SearchDetail />
+                </Detail>
+              </>
+            ) : null}
+          </>
         </Content>
       )}
     </Wrapper>
@@ -173,16 +248,17 @@ const Info = styled(motion.div)`
   opacity: 0;
   position: absolute;
   width: 100%;
+  height: 100%;
 
   h4 {
     text-align: center;
-    font-size: 15px;
-    margin: 10px 0;
+    font-size: 17px;
+    margin: 20px 0;
     padding: 0 10px;
   }
 
   div {
-    font-size: 10px;
+    font-size: 13px;
     text-align: center;
     margin: 10px;
   }
@@ -193,4 +269,25 @@ const HoverImg = styled(motion.svg)<{ bgphoto: string }>`
   background-size: cover;
   background-position: center center;
   width: 100%;
+`;
+
+const Detail = styled(motion.div)`
+  position: absolute;
+  width: 40vw;
+  height: 80vh;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: ${(props) => props.theme.black.lighter};
+`;
+
+const Overlay = styled(motion.div)`
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
 `;

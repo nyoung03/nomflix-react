@@ -150,6 +150,7 @@ function Header() {
   const { register, handleSubmit } = useForm<IForm>();
   const onValid = (data: IForm) => {
     navigation(`/search?keyword=${data.keyword}`);
+    localStorage.setItem("keyword", data.keyword);
     window.location.reload();
   };
   const homeMatch = useMatch("/home");

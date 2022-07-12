@@ -94,7 +94,6 @@ function Tv() {
     ["tv", categories.airing],
     getAiringTodayTv
   );
-  console.log(airingTv);
   const [direction, setDirection] = useState(false);
   const [onAirIndex, setOnAirIndex] = useState(0);
   const [popularIndex, setPopularIndex] = useState(0);
@@ -194,7 +193,11 @@ function Tv() {
                   .map((tv) => (
                     <Box
                       key={tv.id}
-                      bgphoto={makeImagePath(tv.poster_path, "w500")}
+                      bgphoto={
+                        tv.poster_path
+                          ? `${makeImagePath(tv.poster_path, "w500")}`
+                          : ""
+                      }
                       variants={boxVariants}
                       initial="normal"
                       whileHover="hover"
@@ -204,10 +207,11 @@ function Tv() {
                     >
                       <Info variants={infoVariants}>
                         <HoverImg
-                          bgphoto={makeImagePath(
-                            tv.backdrop_path || "",
-                            "w500"
-                          )}
+                          bgphoto={
+                            tv.backdrop_path
+                              ? `${makeImagePath(tv.backdrop_path, "w500")}`
+                              : ""
+                          }
                         />
                         <h4>
                           {tv.name.length > 17
@@ -276,7 +280,11 @@ function Tv() {
                   .map((tv) => (
                     <Box
                       key={tv.id}
-                      bgphoto={makeImagePath(tv.poster_path, "w500")}
+                      bgphoto={
+                        tv.poster_path
+                          ? `${makeImagePath(tv.poster_path, "w500")}`
+                          : ""
+                      }
                       variants={boxVariants}
                       initial="normal"
                       whileHover="hover"
@@ -286,10 +294,11 @@ function Tv() {
                     >
                       <Info variants={infoVariants}>
                         <HoverImg
-                          bgphoto={makeImagePath(
-                            tv.backdrop_path || "",
-                            "w500"
-                          )}
+                          bgphoto={
+                            tv.backdrop_path
+                              ? `${makeImagePath(tv.backdrop_path, "w500")}`
+                              : ""
+                          }
                         />
                         <h4>
                           {tv.name.length > 17
@@ -361,7 +370,11 @@ function Tv() {
                   .map((tv) => (
                     <Box
                       key={tv.id}
-                      bgphoto={makeImagePath(tv.poster_path, "w500")}
+                      bgphoto={
+                        tv.poster_path
+                          ? `${makeImagePath(tv.poster_path, "w500")}`
+                          : ""
+                      }
                       variants={boxVariants}
                       initial="normal"
                       whileHover="hover"
@@ -371,10 +384,11 @@ function Tv() {
                     >
                       <Info variants={infoVariants}>
                         <HoverImg
-                          bgphoto={makeImagePath(
-                            tv.backdrop_path || "",
-                            "w500"
-                          )}
+                          bgphoto={
+                            tv.backdrop_path
+                              ? `${makeImagePath(tv.backdrop_path, "w500")}`
+                              : ""
+                          }
                         />
                         <h4>
                           {tv.name.length > 17
@@ -446,7 +460,11 @@ function Tv() {
                   .map((tv) => (
                     <Box
                       key={tv.id}
-                      bgphoto={makeImagePath(tv.poster_path, "w500")}
+                      bgphoto={
+                        tv.poster_path
+                          ? `${makeImagePath(tv.poster_path, "w500")}`
+                          : ""
+                      }
                       variants={boxVariants}
                       initial="normal"
                       whileHover="hover"
@@ -456,10 +474,11 @@ function Tv() {
                     >
                       <Info variants={infoVariants}>
                         <HoverImg
-                          bgphoto={makeImagePath(
-                            tv.backdrop_path || "",
-                            "w500"
-                          )}
+                          bgphoto={
+                            tv.backdrop_path
+                              ? `${makeImagePath(tv.backdrop_path, "w500")}`
+                              : ""
+                          }
                         />
                         <h4>
                           {tv.name.length > 17

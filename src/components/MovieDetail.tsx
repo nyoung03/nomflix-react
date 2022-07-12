@@ -3,7 +3,7 @@ import { useMatch } from "react-router-dom";
 import styled from "styled-components";
 import { getMovieDetail, IGetMoiveDetail } from "../routes/api";
 
-function Detail() {
+function MovieDetail() {
   const MovieDetailMatch = useMatch("/movies/:id");
   const { data: detail, isLoading: detailIsLoading } =
     useQuery<IGetMoiveDetail>("detail", () =>
@@ -35,9 +35,6 @@ function Detail() {
                 ))}
               </ul>
               <div>상영 시간 : {detail?.runtime}분</div>
-              <div>
-                {detail?.adult ? "청소년 관람 불가" : "청소년 관람 가능"}
-              </div>
             </SubInfo>
           </Content>
         </>
@@ -46,7 +43,7 @@ function Detail() {
   );
 }
 
-export default Detail;
+export default MovieDetail;
 
 const Wrapper = styled.div`
   width: 100%;
