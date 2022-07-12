@@ -34,6 +34,24 @@ const infoVariants = {
   },
 };
 
+const personboxVariants = {
+  normal: {
+    scale: 1,
+  },
+  hover: {
+    scale: 1.3,
+    transition: {
+      delay: 0.3,
+      type: "tween",
+    },
+  },
+};
+
+const type = {
+  movie: "movie",
+  tv: "tv",
+};
+
 function Search() {
   const location = useLocation();
   const keyword = new URLSearchParams(location.search).get("keyword");
@@ -41,9 +59,9 @@ function Search() {
     getMulti(keyword || "")
   );
   const navigation = useNavigate();
-  const idMatch = useMatch("/search/:id");
-  const onBoxClicked = (mediaId: number) => {
-    navigation(`/search/${mediaId}`);
+  const idMatch = useMatch("/search/:type/:id");
+  const onBoxClicked = (mediaId: number, type: string) => {
+    navigation(`/search/${type}/${mediaId}`);
   };
   const getkeyword = localStorage.getItem("keyword");
   const onOverlayClick = () => {
@@ -51,6 +69,8 @@ function Search() {
   };
   const { scrollY } = useViewportScroll();
   const setScrollY = useTransform(scrollY, (value) => value + 70);
+  const personList = data?.results.filter((i) => i.media_type === "person");
+  console.log(personList);
   return (
     <Wrapper>
       {isLoading ? (
@@ -66,6 +86,7 @@ function Search() {
                   movie.media_type === "movie" ? (
                     <Box
                       key={movie.id}
+                      layoutId={`${movie.id}`}
                       bgphoto={
                         movie.poster_path
                           ? `${makeImagePath(movie.poster_path, "w500")}`
@@ -75,7 +96,7 @@ function Search() {
                       initial="normal"
                       whileHover="hover"
                       transition={{ type: "tween" }}
-                      onClick={() => onBoxClicked(movie.id)}
+                      onClick={() => onBoxClicked(movie.id, type.movie)}
                     >
                       <Info variants={infoVariants} key={movie.id}>
                         <HoverImg
@@ -104,6 +125,7 @@ function Search() {
                   tv.media_type === "tv" ? (
                     <Box
                       key={tv.id}
+                      layoutId={`${tv.id}`}
                       bgphoto={
                         tv.poster_path
                           ? `${makeImagePath(tv.poster_path, "w500")}`
@@ -113,6 +135,7 @@ function Search() {
                       initial="normal"
                       whileHover="hover"
                       transition={{ type: "tween" }}
+                      onClick={() => onBoxClicked(tv.id, type.tv)}
                     >
                       <Info variants={infoVariants} key={tv.id}>
                         <HoverImg
@@ -146,23 +169,42 @@ function Search() {
                           ? `${makeImagePath(person.profile_path, "w500")}`
                           : ""
                       }
-                      variants={boxVariants}
+                      variants={personboxVariants}
                       initial="normal"
                       whileHover="hover"
                       transition={{ type: "tween" }}
                     >
-                      <Info variants={infoVariants} key={person.id}>
-                        <HoverImg
-                          bgphoto={
-                            person.profile_path
-                              ? `${makeImagePath(person.profile_path, "w500")}`
-                              : ""
-                          }
-                          style={{ height: "70%" }}
-                        />
+                      <PersonInfo variants={infoVariants} key={person.id}>
                         <h4>{person.name}</h4>
-                        <div>{person.known_for_department}</div>
-                      </Info>
+                        <Job>
+                          {(person.known_for_department === "Acting" &&
+                            "Acter") ||
+                            (person.known_for_department === "Directing" &&
+                              "Director") ||
+                            (person.known_for_department === "Writing" &&
+                              "Writer")}
+                        </Job>
+                        <WorkList>
+                          <div>Tv Show</div>
+                          <ul>
+                            {person.known_for.map(
+                              (i) =>
+                                i.media_type === "tv" && (
+                                  <li key={i.id}>{i.name}</li>
+                                )
+                            )}
+                          </ul>
+                          <div>Movie</div>
+                          <ul>
+                            {person.known_for.map(
+                              (i) =>
+                                i.media_type === "movie" && (
+                                  <li key={i.id}>{i.title}</li>
+                                )
+                            )}
+                          </ul>
+                        </WorkList>
+                      </PersonInfo>
                     </Box>
                   ) : (
                     ""
@@ -178,7 +220,10 @@ function Search() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 1 }}
                 />
-                <Detail style={{ top: setScrollY }}>
+                <Detail
+                  style={{ top: setScrollY }}
+                  layoutId={idMatch?.params.id}
+                >
                   <SearchDetail />
                 </Detail>
               </>
@@ -261,6 +306,49 @@ const Info = styled(motion.div)`
     font-size: 13px;
     text-align: center;
     margin: 10px;
+  }
+`;
+
+const PersonInfo = styled(motion.div)`
+  background-color: ${(props) => props.theme.black.lighter};
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  color: ${(props) => props.theme.white.darker};
+  text-align: center;
+
+  h4 {
+    font-size: 20px;
+    margin: 20px 0;
+  }
+`;
+
+const Job = styled.div`
+  font-size: 13px;
+`;
+
+const WorkList = styled.div`
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 17px;
+
+  div {
+    padding: 10px 0;
+  }
+
+  ul {
+    width: 80%;
+    font-size: 13px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid ${(props) => props.theme.black.darker};
+  }
+
+  li {
+    padding: 3px 0;
   }
 `;
 

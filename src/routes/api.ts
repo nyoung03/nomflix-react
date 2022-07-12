@@ -137,6 +137,7 @@ interface IPeople {
   id: number;
   media_type: string;
   name: string;
+  title: string;
   overview: string;
   poster_path: string;
   vote_average: number;
@@ -165,5 +166,36 @@ export interface IGetMultiMedia {
 export function getMulti(keyword: string) {
   return fetch(
     `${BASE_PATH}/search/multi?api_key=${API_KEY}&language=ko&query=${keyword}&page=1&include_adult=false`
+  ).then((response) => response.json());
+}
+
+interface ISearchGenres {
+  id: number;
+  name: string;
+}
+
+export interface IGetSearch {
+  adult: boolean;
+  backdrop_path: string;
+  homepage: string;
+  id: number;
+  original_title: string;
+  poster_path: string;
+  release_date: string;
+  runtime: number;
+  tagline: string;
+  title: string;
+  genres: ISearchGenres[];
+  overview: string;
+  first_air_date: string;
+  last_air_date: string;
+  name: string;
+  number_of_episodes: number;
+  number_of_seasons: number;
+}
+
+export function getMultiDetail(id: string, type: string) {
+  return fetch(
+    `${BASE_PATH}/${type}/${id}?api_key=${API_KEY}&language=ko`
   ).then((response) => response.json());
 }
