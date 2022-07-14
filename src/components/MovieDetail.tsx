@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { getMovieDetail, IGetMoiveDetail } from "../routes/api";
 
 function MovieDetail() {
-  const MovieDetailMatch = useMatch("/movies/:id");
+  const MovieDetailMatch = useMatch("/movie/:id");
   const { data: detail, isLoading: detailIsLoading } =
     useQuery<IGetMoiveDetail>("detail", () =>
       getMovieDetail(MovieDetailMatch?.params.id || "")

@@ -12,13 +12,15 @@ function App() {
       <Header />
       <Routes>
         <Route path="/login" element={<Login />}></Route>
-        <Route path="/home" element={<Home />}></Route>
-        <Route path="/movies/:id" element={<Home />}></Route>
-        <Route path="/tv" element={<Tv />}></Route>
-        <Route path="/tvs/:id" element={<Tv />}></Route>
+        <Route path="/movie" element={<Home />}>
+          <Route path="/movie/:id" element={<Home />} />
+        </Route>
+        <Route path="/tv" element={<Tv />}>
+          <Route path="/tv/:id" element={<Tv />} />
+        </Route>
         <Route path="/search" element={<Search />}></Route>
         <Route path="/search/:type/:id" element={<Search />}></Route>
-        <Route path="/nomflix-react" element={<SignUp />}></Route>
+        <Route path="/" element={<SignUp />}></Route>
       </Routes>
     </Router>
   );

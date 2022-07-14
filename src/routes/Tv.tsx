@@ -77,7 +77,7 @@ const offset = 6;
 
 function Tv() {
   const navigation = useNavigate();
-  const TvDetailMatch = useMatch("/tvs/:id");
+  const TvDetailMatch = useMatch("/tv/:id");
   const { scrollY } = useViewportScroll();
   const setScrollY = useTransform(scrollY, (valuse) => valuse + 70);
   const { data: onAirTv, isLoading: onAirIsLoading } = useQuery<IGetTvs>(
@@ -138,7 +138,7 @@ function Tv() {
     }
   };
   const onBoxClicked = (tvId: number, catagory: string) => {
-    navigation(`/tvs/${tvId}`);
+    navigation(`/tv/${tvId}`);
     setRowName(catagory);
     if (catagory === categories.onAir) {
       setRowName(categories.onAir);

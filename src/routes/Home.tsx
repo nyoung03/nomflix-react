@@ -77,7 +77,7 @@ const offset = 6;
 
 function Home() {
   const navigation = useNavigate();
-  const MovieDetailMatch = useMatch("/movies/:id");
+  const MovieDetailMatch = useMatch("/movie/:id");
   const { scrollY } = useViewportScroll();
   const setScrollY = useTransform(scrollY, (value) => value + 70);
   const { data: nowPlayMovie, isLoading: nowPlayIsLoading } =
@@ -131,7 +131,7 @@ function Home() {
     }
   };
   const onBoxClicked = (category: string, movieId: number) => {
-    navigation(`/movies/${movieId}`);
+    navigation(`/movie/${movieId}`);
     setRowName(category);
     if (category === categories.nowPlay) {
       setRowName(categories.nowPlay);
@@ -144,7 +144,7 @@ function Home() {
     }
   };
   const onOverlayClick = () => {
-    navigation("/home");
+    navigation("/movie");
   };
   return (
     <Wrapper>

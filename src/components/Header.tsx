@@ -153,7 +153,7 @@ function Header() {
     localStorage.setItem("keyword", data.keyword);
     window.location.reload();
   };
-  const homeMatch = useMatch("/home");
+  const movieMatch = useMatch("/movie");
   const tvMatch = useMatch("/tv");
   const loginMatch = useMatch("/");
   const signupMatch = useMatch("/signup");
@@ -176,7 +176,7 @@ function Header() {
           <Link to="home">
             <Item>
               Home
-              {homeMatch && <Circle layoutId="circle" />}
+              {movieMatch && <Circle layoutId="circle" />}
             </Item>
           </Link>
           <Link to="tv">
@@ -208,7 +208,7 @@ function Header() {
             placeholder="Search for movie or tv show"
           />
         </Search>
-        <Link to="/nomflix-react">
+        <Link to="/">
           <Logout>
             <svg
               fill="currentColor"

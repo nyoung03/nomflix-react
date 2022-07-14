@@ -29,7 +29,7 @@ function Login() {
       data.password === getUserdata().password
     ) {
       setLogged(true);
-      navigate("/home");
+      navigate("/movie");
       window.location.reload();
     } else {
       setLogged(false);

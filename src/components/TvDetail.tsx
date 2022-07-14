@@ -5,7 +5,7 @@ import { getTvDetail, IGetTvDetail } from "../routes/api";
 import { makeImagePath } from "../utils/imgPath";
 
 function TvDetail() {
-  const TvDetailMatch = useMatch("/tvs/:id");
+  const TvDetailMatch = useMatch("/tv/:id");
   const { data: detail, isLoading: detailIsLoading } = useQuery<IGetTvDetail>(
     "detail",
     () => getTvDetail(TvDetailMatch?.params.id || "")
