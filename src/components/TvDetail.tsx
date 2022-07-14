@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 import { useMatch } from "react-router-dom";
 import styled from "styled-components";
 import { getTvDetail, IGetTvDetail } from "../routes/api";
-import { makeImagePath } from "../utils";
+import { makeImagePath } from "../utils/imgPath";
 
 function TvDetail() {
   const TvDetailMatch = useMatch("/tvs/:id");

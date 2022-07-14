@@ -1,14 +1,9 @@
-import {
-  AnimatePresence,
-  motion,
-  useTransform,
-  useViewportScroll,
-} from "framer-motion";
+import { motion, useTransform, useViewportScroll } from "framer-motion";
 import { useQuery } from "react-query";
 import { useLocation, useMatch, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import SearchDetail from "../components/SearchDetail";
-import { makeImagePath } from "../utils";
+import { makeImagePath } from "../utils/imgPath";
 import { getMulti, IGetMultiMedia } from "./api";
 
 const boxVariants = {
@@ -237,9 +232,7 @@ function Search() {
 
 export default Search;
 
-const Wrapper = styled.div`
-  /* background-color: rebeccapurple; */
-`;
+const Wrapper = styled.div``;
 
 const Loader = styled.div`
   height: 40vh;

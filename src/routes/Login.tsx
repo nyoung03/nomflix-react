@@ -23,7 +23,7 @@ function Login() {
   };
   const onValid = (data: FormData) => {
     if (
-      data.email === getUserdata().email &&
+      data.email === getUserdata().email ||
       data.password === getUserdata().password
     ) {
       navigate("/home");

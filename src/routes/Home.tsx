@@ -9,7 +9,7 @@ import { useQuery } from "react-query";
 import { useMatch, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import MovieDetail from "../components/MovieDetail";
-import { makeImagePath } from "../utils";
+import { makeImagePath } from "../utils/imgPath";
 import {
   getNowMovies,
   getPopularMovies,

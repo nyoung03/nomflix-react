@@ -66,10 +66,10 @@ function Style() {
       <GlobalStyle />
       <HelmetProvider>
         <Helmet>
-          {/* <link
+          <link
             href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap"
             rel="stylesheet"
-          /> */}
+          />
         </Helmet>
       </HelmetProvider>
     </>
