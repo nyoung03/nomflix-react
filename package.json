@@ -1,5 +1,4 @@
 {
-  "homepage": "https://nyoung03.github.io/nomflix-react",
   "name": "nomflix-react",
   "version": "0.1.0",
   "private": true,
@@ -53,5 +52,6 @@
   },
   "devDependencies": {
     "@types/styled-components": "^5.1.25"
-  }
+  },
+  "homepage": "https://nyoung03.github.io/nomflix-react"
 }
