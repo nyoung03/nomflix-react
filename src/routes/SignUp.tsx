@@ -18,12 +18,13 @@ function SignUp() {
   } = useForm<ISignup>();
   const onValid = (data: ISignup) => {
     localStorage.setItem("user", JSON.stringify(data));
-    navigate("/");
+    navigate("/login");
   };
   return (
     <Wrapper>
       <Frame>
-        <Title>Sign Up</Title>
+        <Title>Welcome Sign Up!</Title>
+        <div></div>
         <SignupForm onSubmit={handleSubmit(onValid)}>
           <Input>
             <input

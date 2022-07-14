@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -11,6 +12,7 @@ interface FormData {
 
 function Login() {
   const navigate = useNavigate();
+  const [logged, setLogged] = useState(false);
   const {
     register,
     handleSubmit,
@@ -23,13 +25,15 @@ function Login() {
   };
   const onValid = (data: FormData) => {
     if (
-      data.email === getUserdata().email ||
+      data.email === getUserdata().email &&
       data.password === getUserdata().password
     ) {
+      setLogged(true);
       navigate("/home");
       window.location.reload();
+    } else {
+      setLogged(false);
     }
-    return;
   };
   return (
     <Wrapper>
@@ -78,7 +82,12 @@ function Login() {
               ) : null}
             </span>
           </Input>
-          <LoginBtn type="submit">Login</LoginBtn>
+          <LoginBtn
+            type="submit"
+            style={{ opacity: `${logged ? "1" : "0.5"}` }}
+          >
+            Login
+          </LoginBtn>
         </LoginForm>
         <SignupLink>
           계정이 없으신가요?

@@ -208,7 +208,7 @@ function Header() {
             placeholder="Search for movie or tv show"
           />
         </Search>
-        <Link to="/">
+        <Link to="/nomflix-react">
           <Logout>
             <svg
               fill="currentColor"
