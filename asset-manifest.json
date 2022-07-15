@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/nomflix-react/static/js/main.3d3d78bc.js",
-    "index.html": "/nomflix-react/index.html",
-    "main.3d3d78bc.js.map": "/nomflix-react/static/js/main.3d3d78bc.js.map"
+    "main.js": "https://nyoung03.github.io/nomflix-react/static/js/main.6ace1ff9.js",
+    "index.html": "https://nyoung03.github.io/nomflix-react/index.html",
+    "main.6ace1ff9.js.map": "https://nyoung03.github.io/nomflix-react/static/js/main.6ace1ff9.js.map"
   },
   "entrypoints": [
-    "static/js/main.3d3d78bc.js"
+    "static/js/main.6ace1ff9.js"
   ]
 }
