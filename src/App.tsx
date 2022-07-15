@@ -8,7 +8,7 @@ import Tv from "./routes/Tv";
 
 function App() {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Header />
       <Routes>
         <Route path="/login" element={<Login />}></Route>
@@ -20,7 +20,7 @@ function App() {
         </Route>
         <Route path="/search" element={<Search />}></Route>
         <Route path="/search/:type/:id" element={<Search />}></Route>
-        <Route path="/" element={<SignUp />}></Route>
+        <Route path={`/`} element={<SignUp />}></Route>
       </Routes>
     </Router>
   );
