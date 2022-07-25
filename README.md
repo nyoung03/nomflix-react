@@ -1,6 +1,6 @@
 # Netflix clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+이 프로젝트는 노마드 코더의 Netflix clone 강의를 보며 공부한 내용과 간단한 추가적인 기능을 넣었습니다.
 
 ## Available Scripts
 
