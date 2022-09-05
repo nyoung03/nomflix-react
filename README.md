@@ -1,6 +1,9 @@
 # Netflix clone
 
-이 프로젝트는 노마드 코더의 Netflix clone 강의를 보며 공부한 내용과 간단한 추가적인 기능을 넣었습니다.
+이 프로젝트는 노마드 코더의 Netflix clone 강의를 보며 공부한 내용과 간단한 추가적인 기능을 넣었습니다. <br />
+추가 기능으로 React-hook-form을 연습하고자 회원가입과 로그인를 추가했습니다. <br />
+
+<a href="https://nyoung03.github.io/nomflix-react/">보러가기</a>
 
 ### 스텍
 - react
@@ -17,7 +20,24 @@
 
 ### 구조
 ```plaintext
-동해물과 백두산이 마르고 닳도록
+1) src
+ - App.tsx
+ - index.tsx
+ - Style.tsx
+ - styled.d.ts
+ - theme.ts
+ - components
+    - Header.tsx
+    - MovieDetail.tsx
+    - TvDetail.tsx
+    - SearchDetail.tsx
+ - routes
+    - Home.tsx
+    - Login.tsx
+    - SignUp.tsx
+    - Tv.tsx
+    - Search.tsx
+    - api.ts
 ```
 
 ### 노션 정리
@@ -27,18 +47,18 @@
 <hr />
 
 ### 1. 회원가입, 로그인
+- `localstorage`를 이용하여 회원가입과 로그인을 구현했습니다.
+- react-hook-form을 이용하여 유효성 검사 기능을 구현했습니다.
 <img src="https://user-images.githubusercontent.com/87607036/188459780-c2178d4e-44b3-49d1-a8b1-4494457b25aa.gif" />
 <img src="https://user-images.githubusercontent.com/87607036/188464771-7d4ce862-4de2-4bc9-bb13-87e1939a66cc.gif" />
 
 ### 2. 메인화면
+- TMDB API를 이용하여 카테고리별 영화와 방송 프로그램을 슬라이드 형식으로 구현했습니다.
+- 각 영화, 방송 카드를 `hover` 하면 간단한 정보를 볼 수 있게 구현했습니다.
+- 각 영화, 방송 카드를 클릭하면 상세 정보를 볼 수 있는 페이지를 구현했습니다.
 <img src="https://user-images.githubusercontent.com/87607036/188464173-3615c8be-127e-42ab-bfbb-9a141d9be7af.gif" />
 
 ### 3. 검색
+- `useLocation`과 `new URLSearchParams()`를 이용하여 키워드 검색 시 관련 데이터들을 나열하였습니다.
 <img src="https://user-images.githubusercontent.com/87607036/188459879-cfb85795-a7e0-42f4-87ee-1c4887cb5239.gif" />
 
-
-### 주요 기능
-- 회원가입, 로그인 : `localstorage`를 이용한 로그인 기능 구현
-- 카테고리별 영화 또는 방송 슬라이드 : framer-motion를 사용하여 슬라이드 구현
-- 상세 정보 페이지 : `hover` 또는 `click`시 상세 정보 구현
-- 검색 기능 : `useLocation`을 이용한 키워드 별 검색 내용 구현
