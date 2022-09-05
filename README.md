@@ -28,9 +28,10 @@
 
 ### 1. 회원가입, 로그인
 <img src="https://user-images.githubusercontent.com/87607036/188459780-c2178d4e-44b3-49d1-a8b1-4494457b25aa.gif" />
+<img src="https://user-images.githubusercontent.com/87607036/188464771-7d4ce862-4de2-4bc9-bb13-87e1939a66cc.gif" />
 
 ### 2. 메인화면
-<img src="" />
+<img src="https://user-images.githubusercontent.com/87607036/188464173-3615c8be-127e-42ab-bfbb-9a141d9be7af.gif" />
 
 ### 3. 검색
 <img src="https://user-images.githubusercontent.com/87607036/188459879-cfb85795-a7e0-42f4-87ee-1c4887cb5239.gif" />
